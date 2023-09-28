@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
+    "build": "ncc build app.js -o dist && cp -R static dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,5 +19,8 @@
     "otplib": "^12.0.1",
     "qrcode": "^1.5.3"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.0"
+  }
 }
