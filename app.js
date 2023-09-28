@@ -86,6 +86,15 @@ app.post('/tfaValidate', async function (req, res) {
   res.json(obj);
 });
 
+app.get('/clearSecret/:account?', function (req, res) {
+  const _account = req.params.account;
+
+  if (cases[_account]?.secret !== '') {
+    cases[_account].secret = '';
+  }
+  res.send('done');
+});
+
 /* 範例
 app.post('/', function (req, res) {
   console.dir(req.body);

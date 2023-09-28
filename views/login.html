@@ -22,6 +22,16 @@
   </style>
   <script src="/static/js/jquery_v3.7.0.min.js"></script>
   <script>
+    $(function () {
+      $('#clearBtn').on('click', function () {
+        const _account = $('#account').val();
+        if (_account !== '') {
+          $.get(`/clearSecret/${_account}`).done(function (data) {
+            alert('done');
+          });
+        }
+      })
+    });
     function frmPost(frm) {
       const _account = frm.account.value;
       const _pwd = frm.password.value;
@@ -61,7 +71,7 @@
   <div class="container">
 
     <!-- 模擬登入 -->
-    <form name="regisForm" method="post" onsubmit="return frmPost(this)">
+    <form name="regisForm" method="get" onsubmit="return frmPost(this)">
       <fieldset>
         <legend>登入表單</legend>
         <p>
@@ -75,7 +85,8 @@
           or 111111
         </p>
         <p>
-          <input type="submit" value="送出">
+          <input type="submit" value="送出"> &nbsp;&nbsp;
+          <button type="button" id="clearBtn">clear secret</button>
         </p>
       </fieldset>
     </form>
